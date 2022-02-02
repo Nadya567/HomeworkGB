@@ -133,19 +133,54 @@ public class Homework4 {
         return false;
     }
 
+    public static int CheckVerticalWin(int i, char symb)
+    {
+        int k = 0;
+        for(int j = 0; j < size; j++)
+        {
+            if(map[i][j] == symb)
+                k++;
+        }
+        return k;
+    }
+    public static int CheckHorizontalWin(int i, char symb)
+    {
+        int k = 0;
+        for(int j = 0; j < size; j++)
+        {
+            if(map[i][j] == symb)
+                k++;
+        }
+        return k;
+    }
+
     public static boolean CheckWin(char symb)
     {
+        int check = 0;
         for(int i = 0; i < size; i++)
         {
-            if((map[i][0] == symb && map[i][1] == symb && map[i][2] == symb) ||
-            (map[0][i] == symb && map[1][i] == symb && map[2][i] == symb) ||
-                    (map[i][i] == symb && map[i + 1][i + 1] == symb && map[i + 2][i + 2] == symb) ||
-                    (map[2][i] == symb && map[1][i] == symb && map[0][i] == symb))
-                return true;
+            check = CheckVerticalWin(i, symb);
+            check = CheckHorizontalWin(i, symb);
         }
         return false;
 
-        /*if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
+
+
+        /*int k = 0;
+        for(int i = 0; i < size; i++)
+        {
+            for(int j = 0; j < size; j++)
+                {
+                    if(map[i][j] == symb)
+                        k++;
+                }
+            if(map[i][0] == symb && map[i][1] == symb && map[i][2] == symb) return true;
+            if(map[0][i] == symb && map[1][i] == symb && map[2][i] == symb) return true;
+            if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
+            if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+        }
+
+        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
         if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
         if (map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
 
